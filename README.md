@@ -16,22 +16,22 @@ A lightweight, console-based banking application built using Object-Oriented Pro
 ## 💻 How to Run
 
 1. Clone or download the repository:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/Nikshit-K/cpp-banking-system.git
-   \`\`\`
+   ```
 2. Navigate to the directory and compile using any standard C++ compiler (such as `g++`):
-   \`\`\`bash
+   ```bash
    g++ -o BankSystem BankSystem.cpp
-   \`\`\`
+   ```
 3. Run the executable:
    - On Windows:
-     \`\`\`bash
+     ```bash
      ./BankSystem.exe
-     \`\`\`
+     ```
    - On Linux/macOS:
-     \`\`\`bash
+     ```bash
      ./BankSystem
-     \`\`\`
+     ```
 
 ## 📌 Future Improvements
 - Add persistent storage using File I/O (`<fstream>`) to retain balances after closing.
