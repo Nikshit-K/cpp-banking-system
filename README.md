@@ -7,7 +7,8 @@ A lightweight, console-based banking application built using Object-Oriented Pro
 - **Deposit & Withdraw:** Handles real-time transaction processing with edge-case validation (guards against negative amounts and overdrafts).
 - **Encapsulation:** Protects account balance and user details using private member variables.
 - **Interactive Menu:** Clean terminal interface driven by a `do-while` loop and `switch-case` control flow.
-
+- **Persistent Storage:** Automatically writes and loads user account data from disk (`account.txt`) using `<fstream>`.
+  
 ## 🛠️ Concepts Applied
 - **Language:** C++
 - **OOP Pillars:** Classes, Objects, Access Specifiers (`private` & `public`), Encapsulation
@@ -34,5 +35,5 @@ A lightweight, console-based banking application built using Object-Oriented Pro
      ```
 
 ## 📌 Future Improvements
-- Add persistent storage using File I/O (`<fstream>`) to retain balances after closing.
-- Implement multi-user management using `std::vector`.
+- [x] Add persistent storage using File I/O (`<fstream>`) to retain balances after closing.
+- [ ] Implement multi-user management using `std::vector`.
