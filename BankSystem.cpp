@@ -1,10 +1,13 @@
 #include <iostream> 
 #include <string>
+#include <fstream>
+
  class BankAccount {
     private:
     double balance; std::string AccHolder;
      
        public:
+       BankAccount() : AccHolder("Unknown"), balance(0.0) {}
     BankAccount(std::string name, double ibalance) //ibalance is initial balance 
     {
         AccHolder = name;
@@ -17,6 +20,7 @@
         if(amount>=0){
             balance += amount;
         std::cout<<"Amount Deposited Successfully!\nyour Balnce is: "<<balance<<"\n\n";
+        SaveToFile();
          }else{std::cout<<"invalid Depositable Amount!";}
         }
     void Withdraw(double amount){
@@ -25,30 +29,64 @@
         } else if (amount <= balance){
             balance-=amount;
             std::cout<<"Transaction was Succesful\nYour Balance is: "<<balance<<"\n\n";
+            SaveToFile();
         } else {
             std::cout<<"Insufficient Funds For Withdrawal\n\n";
         }
     }
-    void SeeBalance(){
+    void SeeBalance() const {
         std::cout<<"Your Balance is: "<<balance<<"\n\n";
-    }             
-
+    }  
     
-            };
+    void SaveToFile() {
+        std::ofstream outFile("account.txt");
+        if (outFile.is_open())
+        {
+            outFile << AccHolder << std::endl;
+            outFile << balance << std::endl;
+            outFile.close();
+         }
+        }
+       
+    bool ReadFromFile() {
+        std::ifstream inFile("account.txt");
+
+        if(inFile.is_open()){
+            std::getline(inFile, AccHolder);
+            inFile >> balance;
+            inFile.close();
+            return true;          
+           } else {return false;}
+          } 
+};
 
 int  main(){
 int num;
 double deposit, withdraw, BALANCE;
 std::string name;
+BankAccount MyAccount;
 
 
 
-std::cout <<" \n \nWelcome to ABC BANK \n \n"<<
-            "To Get Started Please Enter Your Name\n";
-std::cin>>name;
+std::cout <<" \n===================";
+std::cout << "\nWelcome to ABC BANK \n";
+std::cout <<  "===================\n";
+
+if(MyAccount.ReadFromFile()){
+    std::cout << "Existing Account Found! Loaded Your details Sccessfully.\n\n";
+    MyAccount.SeeBalance();
+} else {
+  
+    std::cout<<"To Get Started Please Enter Your Name\n";
+std::cin>>std::ws;
+std::getline(std::cin, name);
 std::cout<<"\nNow Kindly Enter Your Initial Balance\n";
 std::cin>>BALANCE;
-BankAccount MyAccount(name, BALANCE);            
+
+MyAccount = BankAccount(name, BALANCE);
+MyAccount.SaveToFile();
+std::cout << "Account created Succesfully and saved to disk!\n\n";
+ }           
 
             do {
 
