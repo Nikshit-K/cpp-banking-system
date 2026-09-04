@@ -23,7 +23,7 @@ A robust, console-based multi-user banking application built using Object-Orient
 
 1. Clone or download the repository:
    ```bash
-   git clone [https://github.com/Nikshit-K/cpp-banking-system.git](https://github.com/Nikshit-K/cpp-banking-system.git)
+   git clone https://github.com/Nikshit-K/cpp-banking-system.git
    ```
 2. Navigate to the directory and compile using any standard C++ compiler (such as `g++`):
    ```bash
